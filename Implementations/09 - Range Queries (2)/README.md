@@ -18,10 +18,6 @@
         * CPH (9, Range Queries)
         * [Topcoder BIT](https://www.topcoder.com/community/data-science/data-science-tutorials/binary-indexed-trees/)
         * [CSAcademy BIT](https://csacademy.com/lesson/fenwick_trees)
-    * Indexed Set
-      * Tutorial
-        * [Codeforces](http://codeforces.com/blog/entry/11080)
-      * Often used in place of BIT
     * Range Minimum Query
       * Tutorial
         * [Wikipedia](https://en.wikipedia.org/wiki/Range_minimum_query)
@@ -59,12 +55,20 @@
         * [A2OJ](https://a2oj.com/category?ID=650)
   * Treap
       * Notes
+        * [Quora](https://threads-iiith.quora.com/Treaps-One-Tree-to-Rule-em-all-Part-1)
         * [PPT](https://docs.google.com/presentation/d/14xgtdDWnIBwmJRAuIdZ8FvLZcX9uRxnNoGOGAQRDIvc/edit?usp=sharing)
         * CS Guide
       * Problems
         * [Strings](https://csacademy.com/contest/archive/task/strings/) [](181)
         * [Points & Distances](https://www.hackerearth.com/problem/algorithm/septembereasy-points-and-distances-d30d0e6b/description/) [](185)
         * [A2OJ](https://a2oj.com/category?ID=14)
+      * C++ STL
+        * Indexed Set
+          * [Codeforces Tutorial](http://codeforces.com/blog/entry/11080)
+          * Good to know for gold, as sometimes it can be used in place of BIT
+        * Rope
+          * [Codeforces Tutorial](https://codeforces.com/blog/entry/10355)
+      
 ## 5
 
   * Persistent Segment Tree
@@ -86,3 +90,6 @@
 
   * [Wavelet Tree](http://codeforces.com/blog/entry/52854)
   * [Segment Tree Beats](http://codeforces.com/blog/entry/57319)
+  * Sqrt Tree
+    * [Pt 1](http://codeforces.com/blog/entry/57046)
+    * [Pt 2](http://codeforces.com/blog/entry/59092)

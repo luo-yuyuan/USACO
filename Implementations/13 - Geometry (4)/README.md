@@ -15,13 +15,15 @@
       * [TopCoder](https://www.topcoder.com/community/data-science/data-science-tutorials/geometry-concepts-basic-concepts/)
       * [Point Class](http://codeforces.com/blog/entry/48122)
       * [Easy Geo w/ std::complex](http://codeforces.com/blog/entry/22175)
+      * [Geo Book](http://codeforces.com/blog/entry/59129)
       * CPH (29, Geometry)
-    * Problem(s)
+    * Problems
       * [Arpa & Geo](http://codeforces.com/problemset/problem/851/B)
       * [Tell Your World](http://codeforces.com/problemset/problem/849/B)
       * [Gleb & Pizza](http://codeforces.com/problemset/problem/842/B)
       * [Birthday Cake](https://open.kattis.com/problems/birthdaycake)
       * [Racing Off Track](https://open.kattis.com/contests/acpc17open/problems/racingofftrack)
+      * [TopCoder Watchtower](https://community.topcoder.com/stat?c=problem_statement&pm=2014&rd=4685)
   * Convex Hull
     * Tutorial
       * CPH (30, Sweep Line Algorithms)
@@ -41,4 +43,5 @@
       * [A2OJ](https://a2oj.com/category?ID=22)
   
 ## 6
-  * KD Tree
+  * KD Tree?
+  * Delaunay Triangulation?

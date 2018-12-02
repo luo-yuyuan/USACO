@@ -1,20 +1,29 @@
-/**
-* Sources: various
-*/
+#pragma GCC optimize ("O3")
+#pragma GCC target ("sse4")
 
 #include <bits/stdc++.h>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/pb_ds/assoc_container.hpp>
+#include <ext/rope>
 
 using namespace std;
 using namespace __gnu_pbds;
+using namespace __gnu_cxx;
  
 typedef long long ll;
 typedef long double ld;
-typedef vector<int> vi;
+typedef complex<ld> cd;
+
 typedef pair<int, int> pi;
 typedef pair<ll,ll> pl;
-typedef pair<double,double> pd;
+typedef pair<ld,ld> pd;
+
+typedef vector<int> vi;
+typedef vector<ld> vd;
+typedef vector<ll> vl;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<cd> vcd;
 
 template <class T> using Tree = tree<T, null_type, less<T>, rb_tree_tag,tree_order_statistics_node_update>;
 
@@ -33,13 +42,16 @@ template <class T> using Tree = tree<T, null_type, less<T>, rb_tree_tag,tree_ord
 #define all(x) x.begin(), x.end()
 
 const int MOD = 1000000007;
-const double PI = 4*atan(1);
 const ll INF = 1e18;
+const int MX = 100001;
 
 int main() {
-    ios_base::sync_with_stdio(0); cin.tie(0);
-    
+ 
 }
 
-// read the question correctly (is y a vowel?)
-// look out for special cases (n=1?) and overflow (ll vs int?)
+/* 
+* (Actually read this pls)
+    * Rlly bad errors: int overflow, array bounds
+    * Less bad errors: special cases (n=1?), set tle
+    * Common sense: do smth instead of nothing
+*/

@@ -1,34 +1,33 @@
 /**
-* Source: http://www.geeksforgeeks.org/biconnected-components/
-* Some corrections!
+* Description: 
+* Source: GeeksForGeeks (corrected)
 * Verification: USACO December 2017, Push a Box
-* Code: https://pastebin.com/yUWuzTH8
+    * https://pastebin.com/yUWuzTH8
 */
 
 template<int SZ> struct BCC {
-    int N, ti = 0;
+    int N;
     vi adj[SZ];
-    int disc[SZ], low[SZ], comp[SZ], par[SZ];
-    vector<vector<pii>> fin;
-    vector<pii> st;
+    vector<vpi> fin;
     
-    void addEdge(int u, int v) {
-        adj[u].pb(v), adj[v].pb(u);
-    }
+    void addEdge(int u, int v) { adj[u].pb(v), adj[v].pb(u); }
     
-    void BCCutil(int u) {
+    int ti = 0, disc[SZ], low[SZ], comp[SZ], par[SZ];
+    vpi st;
+
+    void BCCutil(int u, bool root = 0) {
         disc[u] = low[u] = ti++;
         int child = 0;
         
-        for (int i: adj[u]) if (i != par[u]) {
+        for (int i: adj[u]) if (i != par[u]) 
             if (disc[i] == -1) {
                 child ++; par[i] = u;
                 st.pb({u,i});
                 BCCutil(i);
                 low[u] = min(low[u],low[i]);
                 
-                if ((disc[u] == 0 && child > 1) || (disc[u] != 0 && disc[u] <= low[i])) { // articulation point!
-                    vector<pii> tmp;
+                if ((root && child > 1) || (!root && disc[u] <= low[i])) { // articulation point!
+                    vpi tmp;
                     while (st.back() != mp(u,i)) tmp.pb(st.back()), st.pop_back();
                     tmp.pb(st.back()), st.pop_back();
                     fin.pb(tmp);
@@ -37,13 +36,13 @@ template<int SZ> struct BCC {
                 low[u] = min(low[u],disc[i]);
                 st.pb({u,i});
             }
-        }
     }
     
-    void bcc() {
+    void bcc(int _N) {
+        N = _N;
         FOR(i,1,N+1) par[i] = disc[i] = low[i] = -1;
         FOR(i,1,N+1) if (disc[i] == -1) {
-            BCCutil(i);
+            BCCutil(i,1);
             if (sz(st)) fin.pb(st);
             st.clear();
         }

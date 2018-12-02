@@ -1,14 +1,15 @@
 /**
 * Description: Shoelace Formula
-* Usage: https://open.kattis.com/problems/polygonarea
+* Source: Own
+* Verification: https://open.kattis.com/problems/polygonarea
 */ 
 
-double area(vector<pii> v) {
-    double x = 0;
+ld area(vector<cd> v) {
+    ld x = 0;
     F0R(i,sz(v)) {
         int j = (i+1)%sz(v);
-        x += (ll)v[i].f*v[j].s;
-        x -= (ll)v[j].f*v[i].s;
+        x += (ld)v[i].real()*v[j].imag();
+        x -= (ld)v[j].real()*v[i].imag();
     }
     return abs(x)/2;
 }

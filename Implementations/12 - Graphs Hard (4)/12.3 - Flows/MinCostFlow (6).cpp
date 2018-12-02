@@ -1,5 +1,7 @@
 /**
+* Description: 
 * Source: GeeksForGeeks
+* Verification: CodeForces?
 */
 
 struct Edge {
@@ -7,7 +9,7 @@ struct Edge {
 };
 
 template<int SZ> struct mcf {
-    pii pre[SZ];
+    pi pre[SZ];
     int cost[SZ], num[SZ], SC, SNC;
     ll flo, ans, ccost;
     vector<Edge> adj[SZ];
@@ -27,10 +29,10 @@ template<int SZ> struct mcf {
     bool spfa() {
         F0R(i,SZ) cost[i] = MOD, num[i] = 0;
         cost[SC] = 0, num[SC] = MOD;
-        priority_queue<pii,vector<pii>,greater<pii>> todo; todo.push({0,SC});
+        priority_queue<pi,vpi,greater<pi>> todo; todo.push({0,SC});
 
         while (todo.size()) {
-            pii x = todo.top(); todo.pop();
+            pi x = todo.top(); todo.pop();
             if (x.f > cost[x.s]) continue;
             for (auto a: adj[x.s]) if (x.f+a.cost < cost[a.v] && a.flow < a.C) {
                 pre[a.v] = {x.s,a.rev};
@@ -53,7 +55,7 @@ template<int SZ> struct mcf {
         }
     }
     
-    pii mincostflow(int sc, int snc) {
+    pi mincostflow(int sc, int snc) {
         SC = sc, SNC = snc;
         flo = ans = ccost = 0;
         
@@ -65,14 +67,3 @@ template<int SZ> struct mcf {
         }
     }
 };
-
-mcf<100> m;
-
-int main() {
-    m.addEdge(0, 1, 16, 5);
-    m.addEdge(1, 2, 13, 7);
-    m.addEdge(1, 2, 13, 8);
-    
-    pii x = m.mincostflow(0,2);
-    cout << x.f << " " << x.s;
-}

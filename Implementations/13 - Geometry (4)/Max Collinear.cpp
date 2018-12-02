@@ -1,14 +1,15 @@
 /**
+* Description: Compute the maximum number of points which lie on the same line in O(n^2logn)
 * Source: own
-* Usage: https://open.kattis.com/problems/maxcolinear
+* Verification: https://open.kattis.com/problems/maxcolinear
 */
 
 int n, mx, ans;
-map<pair<pii,int>,int> m;
-pii p[1000];
+map<pair<pi,int>,int> m;
+pi p[1000];
 
-pair<pii,int> getline(pii a, pii b) {
-    pii z = {b.f-a.f,b.s-a.s};
+pair<pi,int> getline(pi a, pi b) {
+    pi z = {b.f-a.f,b.s-a.s};
     swap(z.f,z.s); z.f *= -1;
     int g = __gcd(z.f,z.s); z.f /= g, z.s /= g;
     if (z.f < 0 || (z.f == 0 && z.s < 0)) z.f *= -1, z.s *= -1;

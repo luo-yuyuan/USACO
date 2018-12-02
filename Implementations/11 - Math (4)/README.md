@@ -48,13 +48,20 @@
       * [Factorization Game](https://www.hackerearth.com/problem/algorithm/mancunian-and-factorization-game-b8794702/) [](61)
       * [Arpa & Game](http://codeforces.com/contest/850/problem/C) [](66)
       * [Apple Tree](http://codeforces.com/contest/812/problem/E) [](67)
-  * Gaussian Elimination
-    * Tutorial
-      * [Wikipedia](https://en.wikipedia.org/wiki/Gaussian_elimination)
-    * Problems
-      * Linear Equation Solver
-      * [Xor Cycle](https://csacademy.com/contest/archive/task/xor_cycle/statement/) [](78)
-      * [A2OJ](https://a2oj.com/category?ID=59)
+  * More Matrices
+    * Gaussian Elimination
+      * Tutorial
+        * [Wikipedia](https://en.wikipedia.org/wiki/Gaussian_elimination)
+      * Problems
+        * Linear Equation Solver
+        * [Xor Cycle](https://csacademy.com/contest/archive/task/xor_cycle/statement/) [](78)
+        * [A2OJ](https://a2oj.com/category?ID=59)
+    * Kirchhoff's Theorem
+      * Tutorial
+        * [Wikipedia](https://en.wikipedia.org/wiki/Kirchhoff%27s_theorem)
+      * Problems
+        * [Hierarchies Count](https://codefights.com/interview-practice/task/TJ7hGeey6JYNFjBBg)
+        * [Stranger Trees](http://codeforces.com/contest/917/problem/D)
   * Karatsuba
     * [Wikipedia](https://en.wikipedia.org/wiki/Karatsuba_algorithm)
     * [Implementation](http://codeforces.com/contest/623/submission/15807539)
@@ -65,6 +72,7 @@
       * [CF Tutorial Pt 2](http://codeforces.com/blog/entry/48798)
       * [CSAcademy](https://csacademy.com/blog/fast-fourier-transform-and-variations-of-it/)
       * [adamant](http://codeforces.com/blog/entry/55572)
+      * [CP-Algorithms](https://cp-algorithms.com/algebra/fft.html)
     * Problems
       * Base Conversion
       * Bitwise XOR, And, Or

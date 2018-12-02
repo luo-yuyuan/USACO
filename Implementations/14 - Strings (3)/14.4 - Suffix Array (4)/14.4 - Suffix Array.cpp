@@ -1,63 +1,76 @@
 /**
-* Source: SuprDewd CP Course
-* Task: https://open.kattis.com/problems/suffixsorting
-* KACTL version is slightly faster
-* Verification: USACO December 2017: Standing out from the herd: http://usaco.org/index.php?page=viewproblem2&cpid=768
-* Code to Verify: https://pastebin.com/y2Z9FYr6
+* Description:
+* Sources: SuprDewd, KACTL, majk
+* Verification: 
+    * http://usaco.org/index.php?page=viewproblem2&cpid=768
+        * https://pastebin.com/y2Z9FYr6
+    * https://open.kattis.com/problems/suffixsorting
 */
 
-struct suffix_array {
+struct SuffixArray {
     int N;
-    vector<vi> P;
-    vector<array<int,3>> L;
     vi idx;
     string str;
+    // RMQ<int,MX> R; 
     
-    /*void bucket(int ind) {
-        int mn = MOD, mx = -MOD;
-        
-        for (auto a: L) mn = min(mn,a[ind]), mx = max(mx,a[ind]);
-        vector<array<int,3>> tmp[mx-mn+1];
-        F0Rd(i,sz(L)) tmp[L[i][ind]-mn].pb(L[i]);
-        
-        int nex = 0;
-        F0R(i,mx-mn+1) for (auto a: tmp[i]) L[nex++] = a;
+    void compress(vi& v) {
+        vi V = v; sort(all(V)); V.erase(unique(all(V)),V.end());
+        for (int& i: v) i = lb(all(V),i)-V.begin()+1;
     }
     
-    void bucket_sort() {
-        bucket(1), bucket(0);
-    }*/
+    vi A, L; // A stores lexicographic value, L stores suffixes in order
     
-    suffix_array(string _str) {
-        str = _str; N = sz(str);
-        P.pb(vi(N)); L.resize(N);
-        F0R(i,N) P[0][i] = str[i];
+    int get(int x) { return x >= N ? 0 : A[x]; }
+    
+    void sort_by(int x) { // stable sort elements in a by b
+        vi cum(N+1); F0R(i,N) cum[get(i+x)] ++;
+        int sum = 0; F0R(i,N+1) cum[i] = (sum += cum[i], sum-cum[i]);
         
-        for (int stp = 1, cnt = 1; cnt < N; stp ++, cnt *= 2) {
-            P.pb(vi(N));
-            F0R(i,N) L[i] = {P[stp-1][i],i+cnt < N ? P[stp-1][i+cnt] : -1,i};
-            sort(all(L));
-            // bucket_sort();
+        vi L2(N);
+        for (int i: L) L2[cum[get(i+x)]++] = i;
+        swap(L,L2);
+    }
+    
+    void init(string _str) {
+        str = _str; N = sz(str);
+        A.resize(N); F0R(i,N) A[i] = str[i]; compress(A); 
+        L.resize(N); F0R(i,N) L[i] = i;
+        
+        for (int cnt = 1; cnt < N; cnt <<= 1) { 
+            sort_by(cnt), sort_by(0);
+        
+            vi A2(N);
             F0R(i,N) {
-                if (i && mp(L[i][0],L[i][1]) == mp(L[i-1][0],L[i-1][1])) P[stp][L[i][2]] = P[stp][L[i-1][2]];
-                else P[stp][L[i][2]] = i;
+                if (i == 0) A2[L[i]] = 1;
+                else A2[L[i]] = A2[L[i-1]]+
+                    (mp(get(L[i]),get(L[i]+cnt)) != mp(get(L[i-1]),get(L[i-1]+cnt)));
             }
+            
+            swap(A,A2);
         }
         
-        idx.resize(N);
-        F0R(i,sz(P.back())) idx[P.back()[i]] = i;
+        // vi v = lcpArray(); R.build(v);
     }
     
-    int lcp(int x, int y) {
-        int res = 0;
-        if (x == y) return N-x;
-        for (int k = sz(P) - 1; k >= 0 && x < N && y < N; k--) {
-            if (P[k][x] == P[k][y]) {
-                x += 1 << k;
-                y += 1 << k;
-                res += 1 << k;
-            }
+    vi lcpArray() { // KACTL
+        int h = 0;
+        vi inv(N), res(N);
+        F0R(i,N) inv[L[i]] = i;
+        F0R(i,N) if (inv[i]) {
+            int p0 = L[inv[i] - 1];
+            while (max(i,p0)+h < N && str[i+h] == str[p0+h]) h++;
+            res[inv[i]] = h;
+            if (h) h--;
         }
         return res;
     }
+    
+    /*int lcp(int a, int b) {
+        if (a == b) return N-a;
+        int t0 = A[a], t1 = A[b];
+        if (t0 > t1) swap(t0,t1);
+        return R.query(t0,t1-1);
+    }*/
 };
+
+SuffixArray S; // S.init("bcabcb");
